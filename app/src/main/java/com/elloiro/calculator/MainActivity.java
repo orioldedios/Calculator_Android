@@ -15,10 +15,11 @@ public class MainActivity extends AppCompatActivity {
         PLUS,
         MINUS,
         MULTIPLICATION,
-        DIVISION
+        DIVISION,
+        NONE
     }
-    private operations operation_saved;
-    private int first_number_saved;
+    private operations operation_saved = operations.NONE;
+    private int first_number_saved = 0;
     private  boolean operand_clicked_before = false;
 
     @Override
@@ -64,5 +65,13 @@ public class MainActivity extends AppCompatActivity {
         }
         first_number_saved = Integer.parseInt(num);
         operand_clicked_before = true;
+    }
+
+    public void OnClickEqual (View view)
+    {
+        switch (operation_saved)
+        {
+
+        }
     }
 }
