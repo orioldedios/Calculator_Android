@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private float first_number_saved = 0.0f;
     private  boolean operand_clicked_before = false;
     private  boolean equal_button_clicked_before = false;
+    private  boolean dot_set_once = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
             first_number_saved = Float.parseFloat(num);
             operand_clicked_before = true;
+            dot_set_once = false;
             num = "";
         }
     }
@@ -84,12 +87,17 @@ public class MainActivity extends AppCompatActivity {
             Operate();
             operand_clicked_before = false;
             equal_button_clicked_before = true;
+            num = num_view.getText().toString();
         }
     }
 
     public void OnClickDot(View view)
     {
-
+        if (num_view.getText().toString() != "ERROR" && !dot_set_once && !equal_button_clicked_before)
+        {
+            num += ".";
+            dot_set_once = true;
+        }
     }
 
     public void OnClickCE(View view)
@@ -99,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         first_number_saved = 0.0f;
         operand_clicked_before = false;
         equal_button_clicked_before = false;
+        dot_set_once = false;
         num_view.setText(num);
     }
 
